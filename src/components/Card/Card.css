@@ -1,14 +1,16 @@
+/* Card.css */
+
 .cardContainer {
     display: flex;
     flex-direction: column;
     background-color: #ffffff; /* Card background color */
     border: 1px solid #e0e0e0; /* Card border */
     border-radius: 8px; /* Rounded corners */
-    padding: 10px; /* Padding inside the card */
-    margin: 10px; /* Margin around the card */
-    width: 300px; /* Increased width for a to-do list format */
+    padding: 8px; /* Reduced padding inside the card */
+    margin: 8px; /* Reduced margin around the card */
+    width: 250px; /* Smaller width */
     height: auto; /* Adjust height automatically based on content */
-    min-height: 80px; /* Minimum height to maintain size */
+    min-height: 60px; /* Reduced minimum height to maintain size */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     transition: transform 0.2s; /* Smooth transition for hover effect */
     overflow: hidden; /* Hide overflow content */
@@ -31,12 +33,13 @@
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflowing text */
+    font-size: 10px; /* Smaller font size for the card ID */
 }
 
 .imageContainer {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 25px; /* Smaller image container */
+    height: 25px; /* Smaller image container */
 }
 
 .userImage {
@@ -49,27 +52,27 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 10px; /* Status indicator size */
-    height: 10px; /* Status indicator size */
+    width: 8px; /* Smaller status indicator */
+    height: 8px; /* Smaller status indicator */
     border-radius: 50%; /* Circular status indicator */
 }
 
 .cardTitle {
-    font-weight: 600; /* Bold font weight for title */
-    margin: 5px 0; /* Reduced margin */
-    font-size: 14px; /* Font size for title */
+    font-weight: 700; /* Bold font weight for title */
+    margin: 4px 0; /* Reduced margin */
+    font-size: 12px; /* Smaller font size for title */
 }
 
 .cardTags {
     display: flex;
     flex-wrap: wrap; /* Allow tags to wrap */
-    gap: 5px; /* Gap between tags */
+    gap: 4px; /* Smaller gap between tags */
     overflow: hidden; /* Prevent overflow */
 }
 
 .tags {
     color: grey; /* Color for tags */
-    font-size: 12px; /* Font size for tags */
+    font-size: 10px; /* Smaller font size for tags */
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflowing text */
@@ -78,38 +81,40 @@
 /* Responsive styles */
 @media (max-width: 768px) {
     .cardContainer {
-        max-width: 100%; /* Full width on smaller screens */
-        padding: 8px; /* Less padding */
-        margin: 8px; /* Less margin */
+        max-width: 90%; /* Full width on smaller screens */
+        padding: 6px; /* Reduced padding */
+        margin: 6px; /* Reduced margin */
     }
 
     .cardHeading {
-        font-size: 14px; /* Smaller font size for heading */
+        font-size: 12px; /* Smaller font size for heading */
     }
 
     .cardTitle {
-        font-size: 12px; /* Smaller font size for title */
+        font-size: 10px; /* Smaller font size for title */
     }
 
     .tags {
-        font-size: 10px; /* Smaller font size for tags */
+        font-size: 9px; /* Smaller font size for tags */
     }
 }
 
 @media (max-width: 480px) {
     .cardContainer {
-        max-width: 90%; /* Ensure it fits well on very small screens */
+        max-width: 100%; /* Full width on very small screens */
+        padding: 5px; /* Further reduced padding */
+        margin: 5px; /* Further reduced margin */
     }
 
     .cardHeading {
-        font-size: 12px; /* Further reduce font size */
+        font-size: 10px; /* Further reduced font size */
     }
 
     .cardTitle {
-        font-size: 10px; /* Further reduce font size */
+        font-size: 9px; /* Further reduced font size */
     }
 
     .tags {
-        font-size: 9px; /* Further reduce font size for tags */
+        font-size: 8px; /* Further reduced font size for tags */
     }
 }
