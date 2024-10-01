@@ -1,11 +1,63 @@
-/* In your CSS file (e.g., styles.css) */
-.ticket-container {
+.topNav {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping of cards */
-    gap: 10px; /* Space between cards */
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff; /* White background for the navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Relative positioning for the dropdown */
 }
 
-.ticket {
-    width: 250px; /* Width of each card */
-    height: auto; /* Automatic height */
+.displayButton {
+    background-color: #ffffff; /* Button background color */
+    color: black; /* Button text color */
+    border: 1px solid #dcdcdc; /* Add a subtle border for distinction */
+    padding: 10px 20px; /* Button padding */
+    font-size: 14px; /* Button font size */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow for distinction */
 }
+
+.displayButton:hover {
+    background-color: white; /* Keep background color white on hover */
+    color: black; /* Keep text color black on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow change on hover */
+
+}
+
+  
+  .dropdownContent {
+    position: absolute; /* Absolute positioning to place under the button */
+    top: 100%; /* Position below the button */
+    left: 0; /* Align to the left of the button */
+    background-color: white; /* Dropdown background color */
+    border: 1px solid #e0e0e0; /* Dropdown border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* More padding inside dropdown */
+    margin-top: 5px; /* Small space between button and dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Dropdown shadow */
+    z-index: 1; /* Ensure it appears above other content */
+    width: 250px; /* Width remains the same */
+  }
+  
+  .dropdownItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Space between dropdown items */
+  }
+  
+  .dropdownItem label {
+    font-size: 12px;
+    margin-right: 90px; /* Increase space between label and select */
+    color: grey;
+  }
+  
+  .dropdownContent select {
+    flex-grow: 1; /* Take up remaining space in the flex container */
+    padding: 5px; /* Padding for selects */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
