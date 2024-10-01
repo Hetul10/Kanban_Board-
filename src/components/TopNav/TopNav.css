@@ -1,0 +1,11 @@
+/* In your CSS file (e.g., styles.css) */
+.ticket-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of cards */
+    gap: 10px; /* Space between cards */
+}
+
+.ticket {
+    width: 250px; /* Width of each card */
+    height: auto; /* Automatic height */
+}
