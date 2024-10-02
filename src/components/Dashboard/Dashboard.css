@@ -1,46 +1,68 @@
-.dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid columns wrap under */
-    gap: 20px; /* Add space between columns */
-    padding: 10px;
-    overflow-y: auto; /* Allow vertical scrolling if content overflows, but no horizontal scrolling */
-    overflow-x: hidden; /* Ensure no horizontal scrolling */
-    height: calc(100vh - 60px); /* Full height minus navbar */
-    margin-top: 60px; /* Adjust for fixed TopNav */
-    box-sizing: border-box;
-}
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Updated width to fit full card content */
+        gap: 20px; /* Add space between columns */
+        padding: 10px;
+        overflow-y: auto; /* Allow vertical scrolling if content overflows */
+        overflow-x: hidden; /* Ensure no horizontal scrolling */
+        height: calc(100vh - 60px); /* Full height minus navbar */
+        margin-top: 60px; /* Adjust for fixed TopNav */
+        box-sizing: border-box;
+    }
 
-.ticket-column {
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    padding: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
+    .ticket-column {
+        background-color: #efefef;
+        border-radius: 8px;
+        padding: 8px;
+        /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 
-.ticket-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 0px; /* Space between cards */
-}
+    .ticket-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 0px; /* Space between cards */
+    }
 
-.ticket-column h3 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.cardContainer {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 10px;
-    margin: px 0;
-    width: 100%; /* Card will take up full width of column */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.cardContainer:hover {
-    transform: scale(1.02); /* Slightly enlarge on hover */
-}
+    .ticket-column h3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .group-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px;
+        background-color: #efefef; /* Light background similar to your example */
+        border-radius: 8px; /* Add a slight border radius for smoothness */
+    }
+    
+    .group-key-text {
+        font-size: 14px; /* Larger text for the group key */
+        font-weight: 600; /* Make the text bold */
+        color: #333; /* Dark color for contrast */
+        margin-left: 10px; /* Add space between the icon and text */
+    }
+    
+    .group-count {
+        font-size: 12px; /* Adjust the size of the count next to the key */
+        font-weight: 500; /* Slightly less bold than the key */
+        color: #666; /* A lighter shade for the count */
+        margin-left: 5px; /* Space between the group key and count */
+    }
+    
+    .icons-container {
+        display: flex;
+        gap: 10px; /* Space between icons */
+        margin-left: auto; /* Push icons to the right */
+    }
+    
+    .action-icon {
+        cursor: pointer;
+        width: 16px; /* Smaller icon size to match the design */
+        height: 16px;
+    }
+    

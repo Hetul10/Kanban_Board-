@@ -20,7 +20,7 @@ const App = () => {
   return (
       <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
           <TopNav onGroupChange={handleGroupChange} onOrderChange={handleOrderChange} />
-          <div style={{ flexGrow: 1 }}>
+          <div style={{ flexGrow: 1, backgroundColor:"#efefef" }}>
               {loading ? (
                   <div>Loading...</div>
               ) : error ? (

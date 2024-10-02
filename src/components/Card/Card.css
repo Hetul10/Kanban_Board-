@@ -4,18 +4,14 @@
     background-color: #ffffff; /* Card background color */
     border: 1px solid #e0e0e0; /* Card border */
     border-radius: 8px; /* Rounded corners */
-    padding: 4px; /* Reduced padding for a more compact card */
+    padding: 6px; /* Adjusted padding for a more compact card */
     margin: 4px; /* Margin around the card */
-    width: 250px; /* Width of the card */
+    width: 200px; /* Updated width to fit full card content */
     height: auto; /* Adjust height automatically based on content */
-    min-height: 40px; /* Further reduced minimum height */
+    min-height: 40px; /* Minimum height */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     transition: transform 0.2s; /* Smooth transition for hover effect */
     overflow: hidden; /* Hide overflow content */
-}
-
-.cardContainer:hover {
-    transform: scale(1.02); /* Slightly scale up on hover */
 }
 
 .cardHeading {
@@ -31,14 +27,14 @@
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflowing text */
-    font-size: 8px; /* Smaller font size for the card ID */
+    font-size: 8px; /* Font size for the card ID */
     margin-bottom: 1px; /* Reduced margin to decrease space to title */
 }
 
 .imageContainer {
     position: relative;
-    width: 18px; /* Smaller image container */
-    height: 18px; /* Smaller image container */
+    width: 20px; /* Slightly larger image container */
+    height: 20px; /* Slightly larger image container */
 }
 
 .userImage {
@@ -51,15 +47,15 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 8px; /* Smaller status indicator */
-    height: 8px; /* Smaller status indicator */
+    width: 10px; /* Slightly larger status indicator */
+    height: 10px; /* Slightly larger status indicator */
     border-radius: 50%; /* Circular status indicator */
 }
 
 .cardTitle {
     font-weight: 600; /* Bold font weight for title */
-    margin: 2px 0; /* Further reduced margin for less space below */
-    font-size: 9px; /* Smaller font size for title */
+    margin: 1px 0; /* Reduced margin for less space below */
+    font-size: 9px; /* Font size for title */
 }
 
 .cardTags {
@@ -71,7 +67,7 @@
 
 .tags {
     color: grey; /* Color for tags */
-    font-size: 8px; /* Smaller font size for tags */
+    font-size: 8px; /* Font size for tags */
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflowing text */
@@ -81,39 +77,39 @@
 @media (max-width: 768px) {
     .cardContainer {
         max-width: 90%; /* Full width on smaller screens */
-        padding: 4px; /* Padding */
+        padding: 6px; /* Padding */
         margin: 4px; /* Margin */
     }
 
     .cardHeading {
-        font-size: 9px; /* Further reduced font size for heading */
+        font-size: 9px; /* Font size for heading */
     }
 
     .cardTitle {
-        font-size: 8px; /* Further reduced font size for title */
+        font-size: 8px; /* Font size for title */
     }
 
     .tags {
-        font-size: 7px; /* Further reduced font size for tags */
+        font-size: 7px; /* Font size for tags */
     }
 }
 
 @media (max-width: 480px) {
     .cardContainer {
         max-width: 100%; /* Full width on very small screens */
-        padding: 3px; /* Further reduced padding */
+        padding: 4px; /* Further reduced padding */
         margin: 3px; /* Further reduced margin */
     }
 
     .cardHeading {
-        font-size: 8px; /* Further reduced font size */
+        font-size: 8px; /* Font size for heading */
     }
 
     .cardTitle {
-        font-size: 7px; /* Further reduced font size */
+        font-size: 7px; /* Font size for title */
     }
 
     .tags {
-        font-size: 6px; /* Further reduced font size for tags */
+        font-size: 6px; /* Font size for tags */
     }
 }

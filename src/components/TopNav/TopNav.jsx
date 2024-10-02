@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./TopNav.css"; // Import your CSS file
 
+// Import your icons
+import displayIcon from '../../icons/Display.svg'; // Your display icon path
+import dropdownIcon from '../../icons/down.svg'; // Your dropdown icon path
+
 const TopNav = ({ onGroupChange, onOrderChange }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [grouping, setGrouping] = useState("Status");
@@ -39,9 +43,11 @@ const TopNav = ({ onGroupChange, onOrderChange }) => {
 
   return (
     <div className="topNav">
-      <div className="dropdownWrapper" ref={dropdownRef}> {/* Attach ref here */}
+      <div className="dropdownWrapper" ref={dropdownRef}>
         <button className="displayButton" onClick={toggleDropdown}>
+          <img src={displayIcon} alt="Display Icon" className="icon-left" />
           Display
+          <img src={dropdownIcon} alt="Dropdown Icon" className="icon-right" />
         </button>
         {dropdownVisible && (
           <div className="dropdownContent">

@@ -6,25 +6,39 @@
     z-index: 1000; /* Ensure it stays on top of other elements */
     background-color: #ffffff; /* Same as the current background */
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow if needed */
+   
 }
 
 .displayButton {
-    background-color: #ffffff; /* Button background color */
-    color: black; /* Button text color */
-    border: 1px solid #dcdcdc; /* Add a subtle border for distinction */
-    padding: 10px 20px; /* Button padding */
-    font-size: 14px; /* Button font size */
-    cursor: pointer; /* Pointer cursor */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow for distinction */
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #dcdcdc;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex; /* Align content horizontally */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between text and icons */
+}
+
+.icon-left {
+  margin-right: 10px; /* Space between icon and text */
+  width: 16px; /* Set icon size */
+  height: 16px;
+}
+
+.icon-right {
+  margin-left: 10px; /* Space between text and dropdown icon */
+  width: 16px;
+  height: 16px;
 }
 
 .displayButton:hover {
-    background-color: white; /* Keep background color white on hover */
-    color: black; /* Keep text color black on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow change on hover */
-
+  background-color: white;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
   
