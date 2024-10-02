@@ -1,10 +1,12 @@
 .topNav {
-    display: flex;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    background-color: #ffffff; /* Same as the current background */
     padding: 10px;
-    background-color: #ffffff; /* White background for the navbar */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative; /* Relative positioning for the dropdown */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow if needed */
 }
 
 .displayButton {
