@@ -38,8 +38,8 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
                 groups[status] = [];
             });
         } else if (grouping === 'Priority') {
-            Object.keys(priorityMapping).forEach(priorityKey => {
-                groups[priorityMapping[priorityKey]] = [];
+            Object.values(priorityMapping).forEach(priority => {
+                groups[priority] = [];
             });
         } else if (grouping === 'User') {
             users.forEach(user => {
@@ -115,7 +115,7 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
                 let iconSrc = '';
 
                 if (grouping === 'User') {
-                    iconSrc = ''; // Use UserIcon separately
+                    iconSrc = ''; // UserIcon is handled separately
                 } else if (grouping === 'Status') {
                     iconSrc = statusIcons[groupKey] || '';
                 } else if (grouping === 'Priority') {
@@ -136,7 +136,7 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
                             )}
                             <div className="group-key-container">
                                 <span className="group-key-text">{groupKey}</span>
-                                <span className="group-count">{groupedTickets[groupKey].length}</span> {/* Display ticket count */}
+                                <span className="group-count">{groupedTickets[groupKey].length}</span>
                             </div>
                             <div className="icons-container">
                                 <img src={addIcon} alt="Add" className="action-icon" />
@@ -148,6 +148,8 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
                             {groupedTickets[groupKey].length > 0 ? (
                                 sortTickets(groupedTickets[groupKey], ordering).map(ticket => {
                                     const user = users.find(user => user.id === ticket.userId);
+                                    const userIcon = user ? user.icon : ''; // Assuming user has an icon property
+
                                     return (
                                         <Card
                                             key={ticket.id}
@@ -156,6 +158,10 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
                                             tag={ticket.tag}
                                             status={ticket.status}
                                             userName={user ? user.name : 'Unknown User'}
+                                            userAvailable={user ? user.available : false} // Pass user availability
+                                            icon={grouping === 'Status' ? '' : statusIcons[ticket.status]} // Pass icon only if not grouping by status
+                                            grouping={grouping} // Pass the grouping prop
+                                            userIcon={userIcon} // Pass the user icon
                                         />
                                     );
                                 })

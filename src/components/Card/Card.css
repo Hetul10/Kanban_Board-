@@ -58,6 +58,18 @@
     font-size: 9px; /* Font size for title */
 }
 
+.title-container {
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+.status-icon {
+    margin-right: 4px; /* Add some space between the icon and the title */
+    width: 12px; /* Adjust size if needed */
+    height: 12px; /* Adjust size if needed */
+}
+
+
 .cardTags {
     display: flex;
     flex-wrap: wrap; /* Allow tags to wrap */
