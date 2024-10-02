@@ -7,7 +7,7 @@ const useFetchData = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+   
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -29,3 +29,4 @@ const useFetchData = () => {
 };
 
 export default useFetchData;
+

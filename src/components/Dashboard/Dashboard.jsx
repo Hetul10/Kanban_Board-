@@ -15,8 +15,8 @@ import highIcon from '../../icons/HighPriority.svg';
 import mediumIcon from '../../icons/MediumPriority.svg';
 import lowIcon from '../../icons/LowPriority.svg';
 import noPriorityIcon from '../../icons/No-priority.svg';
-import addIcon from '../../icons/add.svg'; // Add this import for add icon
-import threeDotIcon from '../../icons/threedot.svg'; // Add this import for three dot icon
+import addIcon from '../../icons/add.svg';
+import threeDotIcon from '../../icons/threedot.svg';
 
 const Dashboard = ({ tickets, users, grouping, ordering }) => {
     const priorityMapping = {
@@ -28,33 +28,56 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
     };
 
     const priorityOrder = [4, 3, 2, 1, 0];
+    const possibleStatuses = ['Todo', 'In progress', 'Backlog', 'Done', 'Cancelled'];
+
+    const initializeGroups = (grouping) => {
+        const groups = {};
+
+        if (grouping === 'Status') {
+            possibleStatuses.forEach(status => {
+                groups[status] = [];
+            });
+        } else if (grouping === 'Priority') {
+            Object.keys(priorityMapping).forEach(priorityKey => {
+                groups[priorityMapping[priorityKey]] = [];
+            });
+        } else if (grouping === 'User') {
+            users.forEach(user => {
+                groups[user.name] = [];
+            });
+        }
+
+        return groups;
+    };
 
     const groupTickets = (tickets, grouping) => {
-        return tickets.reduce((groups, ticket) => {
+        const groups = initializeGroups(grouping);
+
+        tickets.forEach(ticket => {
             let groupKey;
 
-            if (grouping === "Status") {
-                groupKey = ticket.status; // Using status directly
-            } else if (grouping === "User") {
+            if (grouping === 'Status') {
+                groupKey = ticket.status;
+            } else if (grouping === 'User') {
                 const user = users.find(user => user.id === ticket.userId);
                 groupKey = user ? user.name : 'Unknown User';
-            } else if (grouping === "Priority") {
+            } else if (grouping === 'Priority') {
                 groupKey = priorityMapping[ticket.priority] || 'Unknown';
             }
 
-            if (!groups[groupKey]) {
-                groups[groupKey] = [];
+            if (groups[groupKey]) {
+                groups[groupKey].push(ticket);
             }
-            groups[groupKey].push(ticket);
-            return groups;
-        }, {});
+        });
+
+        return groups;
     };
 
     const sortTickets = (tickets, ordering) => {
         return tickets.sort((a, b) => {
-            if (ordering === "Priority") {
+            if (ordering === 'Priority') {
                 return a.priority - b.priority;
-            } else if (ordering === "Title") {
+            } else if (ordering === 'Title') {
                 return a.title.localeCompare(b.title);
             }
             return 0;
@@ -66,25 +89,24 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
     const sortedGroupKeys = Object.keys(groupedTickets).sort((a, b) => {
         const aPriority = Object.keys(priorityMapping).find(key => priorityMapping[key] === a);
         const bPriority = Object.keys(priorityMapping).find(key => priorityMapping[key] === b);
-        
-        return (priorityOrder.indexOf(parseInt(aPriority)) - priorityOrder.indexOf(parseInt(bPriority)));
+
+        return priorityOrder.indexOf(parseInt(aPriority)) - priorityOrder.indexOf(parseInt(bPriority));
     });
 
-    // Map status and priority to their respective icons
     const statusIcons = {
         Todo: todoIcon,
-        'In progress': inProgressIcon, // Exact match
+        'In progress': inProgressIcon,
         Backlog: backlogIcon,
         Done: doneIcon,
         Cancelled: cancelledIcon,
     };
 
     const priorityIcons = {
-        4: urgentIcon,  // Urgent
-        3: highIcon,    // High
-        2: mediumIcon,  // Medium
-        1: lowIcon,     // Low
-        0: noPriorityIcon, // No priority
+        4: urgentIcon,
+        3: highIcon,
+        2: mediumIcon,
+        1: lowIcon,
+        0: noPriorityIcon,
     };
 
     return (
@@ -92,55 +114,54 @@ const Dashboard = ({ tickets, users, grouping, ordering }) => {
             {sortedGroupKeys.map(groupKey => {
                 let iconSrc = '';
 
-                // Determine which icon to use based on the grouping type
-                if (grouping === "User") {
+                if (grouping === 'User') {
                     iconSrc = ''; // Use UserIcon separately
-                } else if (grouping === "Status") {
-                    console.log(`Checking Status: ${groupKey}`); // Debugging output
-                    iconSrc = statusIcons[groupKey] || ''; // Ensure matching keys
-                    console.log(`Status Icon Source: ${iconSrc}`); // Debugging output
-                } else if (grouping === "Priority") {
+                } else if (grouping === 'Status') {
+                    iconSrc = statusIcons[groupKey] || '';
+                } else if (grouping === 'Priority') {
                     const priorityKey = Object.keys(priorityMapping).find(key => priorityMapping[key] === groupKey);
-                    console.log(`Checking Priority: ${groupKey}, Found Key: ${priorityKey}`); // Debugging output
                     iconSrc = priorityIcons[priorityKey] || '';
-                    console.log(`Priority Icon Source: ${iconSrc}`); // Debugging output
                 }
 
                 return (
                     <div key={groupKey} className="ticket-column">
                         <div className="group-header">
-    {grouping === "User" ? (
-        <UserIcon
-            name={groupKey}
-            available={users.find(user => user.name === groupKey)?.available || false}
-        />
-    ) : (
-        <img src={iconSrc} alt={`${groupKey} icon`} className="group-icon" />
-    )}
-    <div className="group-key-container">
-        <span className="group-key-text">{groupKey}</span>
-        <span className="group-count">{groupedTickets[groupKey].length}</span> {/* Display ticket count */}
-    </div>
-    <div className="icons-container">
-        <img src={addIcon} alt="Add" className="action-icon" />
-        <img src={threeDotIcon} alt="More options" className="action-icon" />
-    </div>
-</div>
+                            {grouping === 'User' ? (
+                                <UserIcon
+                                    name={groupKey}
+                                    available={users.find(user => user.name === groupKey)?.available || false}
+                                />
+                            ) : (
+                                <img src={iconSrc} alt={`${groupKey} icon`} className="group-icon" />
+                            )}
+                            <div className="group-key-container">
+                                <span className="group-key-text">{groupKey}</span>
+                                <span className="group-count">{groupedTickets[groupKey].length}</span> {/* Display ticket count */}
+                            </div>
+                            <div className="icons-container">
+                                <img src={addIcon} alt="Add" className="action-icon" />
+                                <img src={threeDotIcon} alt="More options" className="action-icon" />
+                            </div>
+                        </div>
 
                         <div className="ticket-cards">
-                            {sortTickets(groupedTickets[groupKey], ordering).map(ticket => {
-                                const user = users.find(user => user.id === ticket.userId);
-                                return (
-                                    <Card
-                                        key={ticket.id}
-                                        id={ticket.id}
-                                        title={ticket.title}
-                                        tag={ticket.tag}
-                                        status={ticket.status}
-                                        userName={user ? user.name : 'Unknown User'}
-                                    />
-                                );
-                            })}
+                            {groupedTickets[groupKey].length > 0 ? (
+                                sortTickets(groupedTickets[groupKey], ordering).map(ticket => {
+                                    const user = users.find(user => user.id === ticket.userId);
+                                    return (
+                                        <Card
+                                            key={ticket.id}
+                                            id={ticket.id}
+                                            title={ticket.title}
+                                            tag={ticket.tag}
+                                            status={ticket.status}
+                                            userName={user ? user.name : 'Unknown User'}
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <div className="no-tickets"></div>
+                            )}
                         </div>
                     </div>
                 );

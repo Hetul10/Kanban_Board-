@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./TopNav.css"; // Import your CSS file
+import "./TopNav.css"; 
 
-// Import your icons
-import displayIcon from '../../icons/Display.svg'; // Your display icon path
-import dropdownIcon from '../../icons/down.svg'; // Your dropdown icon path
+
+import displayIcon from '../../icons/Display.svg'; 
+import dropdownIcon from '../../icons/down.svg'; 
 
 const TopNav = ({ onGroupChange, onOrderChange }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [grouping, setGrouping] = useState("Status");
   const [ordering, setOrdering] = useState("Priority");
-  const dropdownRef = useRef(null); // Create a ref for the dropdown
+  const dropdownRef = useRef(null); 
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -17,15 +17,17 @@ const TopNav = ({ onGroupChange, onOrderChange }) => {
 
   const handleGroupChange = (e) => {
     setGrouping(e.target.value);
-    onGroupChange(e.target.value); // Pass the grouping option to parent
+    onGroupChange(e.target.value); 
+    localStorage.setItem("grouping", e.target.value); 
   };
 
   const handleOrderChange = (e) => {
     setOrdering(e.target.value);
-    onOrderChange(e.target.value); // Pass the ordering option to parent
+    onOrderChange(e.target.value); 
+    localStorage.setItem("ordering", e.target.value); 
   };
 
-  // Close the dropdown if clicked outside
+  
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setDropdownVisible(false);
@@ -33,13 +35,28 @@ const TopNav = ({ onGroupChange, onOrderChange }) => {
   };
 
   useEffect(() => {
-    // Add event listener for clicks
+   
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Cleanup the event listener on unmount
+    
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    
+    const storedGrouping = localStorage.getItem("grouping");
+    const storedOrdering = localStorage.getItem("ordering");
+
+    if (storedGrouping) {
+      setGrouping(storedGrouping);
+      onGroupChange(storedGrouping); 
+    }
+    if (storedOrdering) {
+      setOrdering(storedOrdering);
+      onOrderChange(storedOrdering);
+    }
+  }, [onGroupChange, onOrderChange]); 
 
   return (
     <div className="topNav">

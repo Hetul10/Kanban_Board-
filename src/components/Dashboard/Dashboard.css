@@ -34,10 +34,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100%;
+        width: 95%;
         padding: 10px;
-        background-color: #efefef; /* Light background similar to your example */
-        border-radius: 8px; /* Add a slight border radius for smoothness */
+        background-color: #efefef; 
+        border-radius: 8px; 
     }
     
     .group-key-text {

@@ -1,17 +1,17 @@
 .cardContainer {
     display: flex;
     flex-direction: column;
-    background-color: #ffffff; /* Card background color */
-    border: 1px solid #e0e0e0; /* Card border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 6px; /* Adjusted padding for a more compact card */
-    margin: 4px; /* Margin around the card */
-    width: 200px; /* Updated width to fit full card content */
-    height: auto; /* Adjust height automatically based on content */
-    min-height: 40px; /* Minimum height */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.2s; /* Smooth transition for hover effect */
-    overflow: hidden; /* Hide overflow content */
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    padding: 6px; 
+    margin: 4px; 
+    width: 200px; 
+    height: auto; 
+    min-height: 40px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s; 
+    overflow: hidden; 
 }
 
 .cardHeading {
